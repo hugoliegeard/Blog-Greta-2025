@@ -7,9 +7,11 @@
     require_once 'config/database.php';
 
     # Importation des Helpers
+    require_once 'helpers/global.helper.php';
     require_once 'helpers/category.helper.php';
     require_once 'helpers/post.helper.php';
-
+    require_once 'helpers/author.helper.php';
+    require_once 'helpers/user.helper.php';
 
     # Récupération des catégories
     $categories = getCategories();
@@ -57,8 +59,8 @@
 
                 </ul>
                 <div class="text-right">
-                    <a class="nav-item btn btn-outline-info" href="#">Connexion</a>
-                    <a class="nav-item btn btn-outline-warning" href="#">Inscription</a>
+                    <a class="nav-item btn btn-outline-info" href="connexion.php">Connexion</a>
+                    <a class="nav-item btn btn-outline-warning" href="inscription.php">Inscription</a>
                 </div>
             </div>
         </div>

@@ -19,10 +19,10 @@ $post = getPostBySlug($_GET['slug']);
                 <div class="col-lg-8 mx-auto text-center">
                     <h1 class="display-4"><?= $post['title'] ?></h1>
                     <div class="text-muted mb-4">
-                        <small>Par <strong><?= $post['username'] ?></strong> - <?= $post['createdAt'] ?></small>
+                        <small class="text-muted">Rédigé par <a href="auteur.php?username=<?= $post['username'] ?>"><?= $post['username'] ?></a> - le <?= date('d/m/Y à H:i', strtotime($post['createdAt'])) ?></small>
                     </div>
                 </div>
-            </div>æ
+            </div>
 
             <!-- Contenu de l'article -->
             <div class="row">
