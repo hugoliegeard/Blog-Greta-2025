@@ -1,21 +1,25 @@
 <?php
 
-    # Importation du fichier de configuration
-    require_once 'config/config.php';
+# Démarrage de la session
+session_start();
 
-    # Importation de la connexion à la BDD
-    require_once 'config/database.php';
+# Importation du fichier de configuration
+require_once 'config/config.php';
 
-    # Importation des Helpers
-    require_once 'helpers/global.helper.php';
-    require_once 'helpers/category.helper.php';
-    require_once 'helpers/post.helper.php';
-    require_once 'helpers/author.helper.php';
-    require_once 'helpers/user.helper.php';
+# Importation de la connexion à la BDD
+require_once 'config/database.php';
 
-    # Récupération des catégories
-    $categories = getCategories();
-    # var_dump($categories);
+# Importation des Helpers
+require_once 'helpers/global.helper.php';
+require_once 'helpers/category.helper.php';
+require_once 'helpers/post.helper.php';
+require_once 'helpers/author.helper.php';
+require_once 'helpers/user.helper.php';
+require_once 'helpers/security.helper.php';
+
+# Récupération des catégories
+$categories = getCategories();
+# var_dump($categories);
 
 ?>
 
@@ -59,8 +63,26 @@
 
                 </ul>
                 <div class="text-right">
-                    <a class="nav-item btn btn-outline-info" href="connexion.php">Connexion</a>
-                    <a class="nav-item btn btn-outline-warning" href="inscription.php">Inscription</a>
+                    <?php if (isLogged()) : ?>
+
+                        <span class="navbar-text mx-2">
+                            Bonjour <strong><?= $_SESSION['user']['firstname'] ?></strong>
+                                <em>( <?= $_SESSION['user']['roles'] ?> )</em>
+
+                        </span>
+
+                        <?php if (isGranted('ROLE_AUTHOR')) : ?>
+                            <a class="nav-item btn btn-outline-warning"
+                               href="creer-un-article.php">Créer un article</a>
+                        <?php endif ?>
+
+                        <a class="nav-item btn btn-outline-danger"
+                           href="deconnexion.php">Déconnexion</a>
+
+                    <?php else : ?>
+                        <a class="nav-item btn btn-outline-info" href="connexion.php">Connexion</a>
+                        <a class="nav-item btn btn-outline-warning" href="inscription.php">Inscription</a>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

@@ -28,7 +28,22 @@ function insertUser(string $firstname,
     $query->bindValue(':firstname', $firstname, PDO::PARAM_STR);
     $query->bindValue(':lastname', $lastname, PDO::PARAM_STR);
     $query->bindValue(':username', $username, PDO::PARAM_STR);
-    $query->bindValue(':roles', $roles, PDO::PARAM_STR);
+    $query->bindValue(':roles', $roles);
 
     return $query->execute() ? $dbh->lastInsertId() : false;
+}
+
+/**
+ * Retrieves a user record from the database using the provided email address.
+ *
+ * @param string $email The email address of the user to retrieve.
+ * @return array The user record as an associative array, or an empty array if no user is found.
+ */
+function getUserByEmail(string $email): array {
+    global $dbh;
+    $sql = 'SELECT * FROM user WHERE email = :email';
+    $query = $dbh->prepare($sql);
+    $query->bindValue(':email', $email, PDO::PARAM_STR);
+    $query->execute();
+    return $query->fetch();
 }
