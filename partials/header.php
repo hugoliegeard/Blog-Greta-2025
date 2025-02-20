@@ -41,7 +41,7 @@ $categories = getCategories();
 <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Actu360&deg;</a>
+            <a class="navbar-brand" href="accueil">Actu360&deg;</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                     aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -50,12 +50,12 @@ $categories = getCategories();
                 <ul class="navbar-nav text-center mx-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page"
-                           href="index.php">Accueil</a>
+                           href="accueil">Accueil</a>
                     </li>
                     <?php foreach ($categories as $category) : ?>
                         <li class="nav-item">
                             <a class="nav-link"
-                               href="categorie.php?slug=<?= $category['slug'] ?>">
+                               href="<?= $category['slug'] ?>">
                                 <?= $category['name'] ?>
                             </a>
                         </li>
@@ -77,11 +77,11 @@ $categories = getCategories();
                         <?php endif ?>
 
                         <a class="nav-item btn btn-outline-danger"
-                           href="deconnexion.php">Déconnexion</a>
+                           href="deconnexion.html">Déconnexion</a>
 
                     <?php else : ?>
-                        <a class="nav-item btn btn-outline-info" href="connexion.php">Connexion</a>
-                        <a class="nav-item btn btn-outline-warning" href="inscription.php">Inscription</a>
+                        <a class="nav-item btn btn-outline-info" href="connexion.html">Connexion</a>
+                        <a class="nav-item btn btn-outline-warning" href="inscription.html">Inscription</a>
                     <?php endif; ?>
                 </div>
             </div>

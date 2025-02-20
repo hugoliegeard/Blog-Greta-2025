@@ -33,7 +33,7 @@ $posts = getPostsByAuthorId($author['id_user']);
                                 <br>
                                 <small class="text-muted">Dans la catégorie : <?= $post['category'] ?></small>
                                 <p class="card-text"><?= mb_strimwidth($post['content'], 0, 20) ?>...</p>
-                                <a href="article.php?slug=<?= $post['slug'] ?>" class="btn btn-primary">Lire la suite</a>
+                                <a href="<?= $post['id_post'] ?>_<?= $post['slug'] ?>" class="btn btn-primary">Lire la suite</a>
                             </div>
                         </div>
                     </div>

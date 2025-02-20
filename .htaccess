@@ -8,5 +8,10 @@ RewriteCond %{REQUEST_FILENAME} -d [OR]
 RewriteCond %{REQUEST_FILENAME} -l
 RewriteRule ^ - [L]
 
-# Règles de Réécriture
-RewriteRule ^accueil.html index.php [QSA, L]
+# Règles de Réecriture
+RewriteRule ^accueil$ index.php [QSA,L]
+RewriteRule ^connexion.html connexion.php [QSA,L]
+RewriteRule ^deconnexion.html deconnexion.php [QSA,L]
+RewriteRule ^inscription.html inscription.php [QSA,L]
+RewriteRule ^([^/]+)_([^/]+) article.php?id=$1&slug=$2 [QSA,L]
+RewriteRule ^([^/]+) categorie.php?slug=$1 [QSA,L]
