@@ -42,7 +42,7 @@
         }
 
         if (empty($id_category)) {
-            $errors['id_category'] = "La catégorie est obligatoire";
+            $errors['id_category']  = "La catégorie est obligatoire";
         }
 
         if (empty($image['size'])) {
