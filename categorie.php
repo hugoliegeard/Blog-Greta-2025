@@ -39,22 +39,7 @@ $posts = getPostsByCategoryId($category['id_category']);
         <div class="py-5 bg-light">
             <div class="container">
                 <div class="row">
-
-                    <?php foreach ($posts as $post): ?>
-                        <div class="mb-4 col-md-4 col-sm-6">
-                            <div class="card shadow-sm">
-                                <img src="https://fakeimg.pl/600x350/?text=Actu360" alt="<?= $post['title'] ?>"
-                                     class="img-fluid">
-                                <div class="card-body">
-                                    <h5 class="card-title"><?= $post['title'] ?></h5>
-                                    <small class="text-muted">Rédigé par <a href="auteur.php?username=<?= $post['username'] ?>"><?= $post['username'] ?></a> - le <?= date('d/m/Y à H:i', strtotime($post['createdAt'])) ?></small>
-                                    <p class="card-text"><?= $post['content'] ?></p>
-                                    <a href="<?= $post['id_post'] ?>_<?= $post['slug'] ?>" class="btn btn-primary">Lire la suite</a>
-                                </div>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-
+                    <?php foreach ($posts as $post): include 'partials/post/_post-card.php'; endforeach; ?>
                 </div> <!-- /.row -->
             </div> <!-- /.container -->
         </div> <!-- /.bg-light -->

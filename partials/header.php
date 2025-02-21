@@ -16,6 +16,7 @@ require_once 'helpers/post.helper.php';
 require_once 'helpers/author.helper.php';
 require_once 'helpers/user.helper.php';
 require_once 'helpers/security.helper.php';
+require_once 'helpers/upload.helper.php';
 
 # Récupération des catégories
 $categories = getCategories();

@@ -37,9 +37,9 @@ function getPostsByCategoryId(int $id_category): array
 /**
  * Permet de récupérer un article par son slug
  * @param string $slug
- * @return array
+ * @return array|bool
  */
-function getPostBySlug(string $slug): array
+function getPostBySlug(string $slug): array|bool
 {
     global $dbh;
 
@@ -71,4 +71,22 @@ function getPostsByAuthorId(int $idAuthor): array
     # Je retourne le résultat de ma requête
     return $query->fetchAll();
 
+}
+
+function createPost(string $title, string $slug, string $content, string $image, int $id_category, int $id_user): bool
+{
+    global $dbh;
+
+    $sql = 'INSERT INTO post (title, slug, content, image, id_category, id_user, createdAt, updatedAt)
+                VALUES (:title, :slug, :content, :image, :id_category, :id_user, NOW(), NOW())';
+
+    $query = $dbh->prepare($sql);
+    $query->bindValue(':title', $title, PDO::PARAM_STR);
+    $query->bindValue(':slug', $slug, PDO::PARAM_STR);
+    $query->bindValue(':content', $content, PDO::PARAM_STR);
+    $query->bindValue(':image', $image, PDO::PARAM_STR);
+    $query->bindValue(':id_category', $id_category, PDO::PARAM_INT);
+    $query->bindValue(':id_user', $id_user, PDO::PARAM_INT);
+
+    return $query->execute() ? $dbh->lastInsertId() : false;
 }

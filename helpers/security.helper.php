@@ -17,7 +17,7 @@ function login(string $email, string $password): bool|array {
 }
 
 function isGranted(string $role): bool {
-    return isset($_SESSION['user']) && $_SESSION['user']['roles'] === $role;
+    return isLogged() && $_SESSION['user']['roles'] === $role;
 }
 
 /**

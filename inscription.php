@@ -56,6 +56,7 @@ if (!empty($_POST)) {
         $idUser = insertUser(...$_POST);
         if ($idUser) {
             // Rediriger l'utilisateur vers la page de connexion
+            addFlash('success', 'Votre compte a bien été créé. Vous pouvez maintenant vous connecter.');
             redirect('connexion.php');
         }
 
@@ -64,7 +65,6 @@ if (!empty($_POST)) {
 }
 
 ?>
-
     <main>
         <div class="p-5 mx-auto text-center">
             <h1 class="display-4">Inscription</h1>

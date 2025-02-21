@@ -9,6 +9,9 @@ require_once 'partials/header.php';
 
 // Récupération de l'article par son slug
 $post = getPostBySlug($_GET['slug']);
+if (!$post) {
+    redirect('404.php');
+}
 
 ?>
 
@@ -24,11 +27,16 @@ $post = getPostBySlug($_GET['slug']);
                 </div>
             </div>
 
+            <!-- Affichage des messages flash -->
+            <?php include 'partials/flash/_flash.message.php' ?>
+
             <!-- Contenu de l'article -->
             <div class="row">
                 <div class="col-lg-8 mx-auto">
+
                     <!-- Image principale -->
-                    <img src="https://fakeimg.pl/1200x600/?text=Article" alt="" class="img-fluid mb-4 rounded">
+                    <img src="<?= 'uploads/posts/'.$post['image'] ?>"
+                         alt="<?= $post['title'] ?>" class="img-fluid mb-4 rounded">
 
                     <!-- Corps de l'article -->
                     <div class="article-content">
@@ -40,6 +48,7 @@ $post = getPostBySlug($_GET['slug']);
                         <a href="#" class="btn btn-outline-primary">&larr; Article précédent</a>
                         <a href="#" class="btn btn-outline-primary">Article suivant &rarr;</a>
                     </div>
+
                 </div>
             </div>
         </div>
